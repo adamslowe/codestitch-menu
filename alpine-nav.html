@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <section>
+            <nav aria-label="Main Menu" class="main-menu__nav">
+                <ul class="main-menu__list" cms-menu="primary" cms-menu-dropdown=".has-submenu">
+                    <li><a href="#">Item One</a></li>
+                    <li
+                        class="has-submenu"
+                        x-data="{
+                                        open: false,
+                                        toggle() {
+                                            if (this.open) {
+                                                return this.close()
+                                            }
+                                            this.$refs.button.focus()
+                                            this.open = true
+                                        },
+                                        close(focusAfter) {
+                                            if (! this.open) return
+                                            this.open = false
+                                            focusAfter && focusAfter.focus()
+                                        },
+                                        hover() {
+                                            if ('ontouchstart' in document.documentElement) {
+                                                //console.log('supports touch')
+                                                return;
+                                            } else {
+                                                //console.log('does NOT support touch')
+                                                if (this.open) {
+                                                    return this.close()
+                                                }
+                                                this.open = true
+                                            }
+                                        }
+                                    }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-on:mouseenter="hover()"
+                        x-on:mouseleave="hover()"
+                        x-id="['mainmenu-submenu']"
+                    >
+                        <div>
+                            <a href="#">Item Two</a>
+                            <button type="button" aria-label="Expand Submenu" aria-expanded="false" aria-controls="mainmenu-submenu" x-ref="button" x-on:click="toggle()" :aria-expanded="open" :aria-controls="$id('mainmenu-submenu')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="0.875em" height="0.875em" fill="currentColor" viewBox="0 0 16 16" :class="{'rotate-90': open}">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <ul class="drop-shadow submenu" x-cloak x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" :id="$id('mainmenu-submenu')">
+                            <li><a href="#">Sub Menu One</a></li>
+                            <li><a href="#">Sub Menu Two</a></li>
+                        </ul>
+                    </li>
+                    <li
+                        class="has-submenu"
+                        x-data="{
+                                        open: false,
+                                        toggle() {
+                                            if (this.open) {
+                                                return this.close()
+                                            }
+                                            this.$refs.button.focus()
+                                            this.open = true
+                                        },
+                                        close(focusAfter) {
+                                            if (! this.open) return
+                                            this.open = false
+                                            focusAfter && focusAfter.focus()
+                                        },
+                                        hover() {
+                                            if ('ontouchstart' in document.documentElement) {
+                                                //console.log('supports touch')
+                                                return;
+                                            } else {
+                                                //console.log('does NOT support touch')
+                                                if (this.open) {
+                                                    return this.close()
+                                                }
+                                                this.open = true
+                                            }
+                                        }
+                                    }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-on:mouseenter="hover()"
+                        x-on:mouseleave="hover()"
+                        x-id="['mainmenu-submenu']"
+                        cms-no-export
+                    >
+                        <div>
+                            <a href="#">Item Three</a>
+                            <button type="button" aria-label="Expand Submenu" aria-expanded="false" aria-controls="mainmenu-submenu" x-ref="button" x-on:click="toggle()" :aria-expanded="open" :aria-controls="$id('mainmenu-submenu')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="0.875em" height="0.875em" fill="currentColor" viewBox="0 0 16 16" :class="{'rotate-90': open}">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <ul class="drop-shadow submenu" x-cloak x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" :id="$id('mainmenu-submenu')">
+                            <li><a href="#">Sub Menu One</a></li>
+                            <li><a href="#">Sub Menu Two</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Item Four</a></li>
+                </ul>
+            </nav>
+        </section>
+    </body>
+</html>
