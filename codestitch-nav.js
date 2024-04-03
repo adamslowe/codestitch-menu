@@ -50,3 +50,23 @@ function ariaExpanded() {
         csUL.setAttribute("aria-expanded", "false");
     }
 }
+
+//
+//
+// Begin New Code Not included in CodeStitch
+//
+//
+
+/*-- -------------------------------------------- -->
+<---     Open dropdowns on hover, close on blur   -->
+<--- -------------------------------------------- -*/
+
+/*-- --------------------------------------- -->
+<---     Escape Key to Close Expanded Items  -->
+<---     Return focus to top level item      -->
+<--- --------------------------------------- -*/
+
+/*-- --------------------------------------- -->
+<---     Remove aria-current if set          -->
+<---     Set aria-current on focused link    -->
+<--- --------------------------------------- -*/
