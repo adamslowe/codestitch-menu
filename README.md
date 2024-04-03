@@ -6,8 +6,8 @@ Addressing keyboard navigation problems with dropdowns and other minor accessibi
 
 -   Modifying [CodeStitch 1530](https://codestitch.app/app/dashboard/stitches/1530/rendered).
 -   Using the [W3C Disclosure Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)
--   Referencing the [Example Disclosure Navigation Menu with Top-Level Links](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation-hybrid/)
--   It may be worth creating an alternate option for dropdown menus with no top-level links using this Example Pattern from the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)
+-   Referencing the [APG Example Disclosure Navigation Menu](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)
+-   It may be worth creating an alternate option for dropdown menus with a top-level link using this Example Pattern from the [Example Disclosure Navigation Menu with Top-Level Links](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation-hybrid/)
 -   Similar menu I built using Alpine.js
     -   [YouTube Video Walkthrough](https://youtu.be/t4ph7z3aLMk?si=xOwzYOE-MaT5xi-X)
     -   Alpine.js [Dropdown Component](https://alpinejs.dev/component/dropdown)

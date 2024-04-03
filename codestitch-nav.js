@@ -41,7 +41,7 @@ for (const item of dropDowns) {
 <--- --------------------------------------- -*/
 // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not
 function ariaExpanded(selector) {
-    const csAriaExpanded = document.querySelector("selector");
+    const csAriaExpanded = document.querySelector(selector);
     const csExpanded = csAriaExpanded.getAttribute("aria-expanded");
 
     if (csExpanded === "false") {
