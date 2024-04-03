@@ -24,7 +24,7 @@ CShamburgerMenu.addEventListener("click", function () {
     CSnavbarMenu.classList.toggle("cs-active");
     CSbody.classList.toggle("cs-open");
     // run the function to check the aria-expanded value
-    ariaExpanded();
+    ariaExpanded("#cs-navigation .cs-toggle");
 });
 
 // mobile nav toggle code
@@ -40,14 +40,14 @@ for (const item of dropDowns) {
 <---     Aria-Expanded Attributes            -->
 <--- --------------------------------------- -*/
 // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not
-function ariaExpanded() {
-    const csUL = document.querySelector("#cs-expanded");
-    const csExpanded = csUL.getAttribute("aria-expanded");
+function ariaExpanded(selector) {
+    const csAriaExpanded = document.querySelector("selector");
+    const csExpanded = csAriaExpanded.getAttribute("aria-expanded");
 
     if (csExpanded === "false") {
-        csUL.setAttribute("aria-expanded", "true");
+        csAriaExpanded.setAttribute("aria-expanded", "true");
     } else {
-        csUL.setAttribute("aria-expanded", "false");
+        csAriaExpanded.setAttribute("aria-expanded", "false");
     }
 }
 
