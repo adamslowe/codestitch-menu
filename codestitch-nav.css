@@ -355,7 +355,7 @@
     #cs-navigation .cs-dropdown:hover {
         cursor: pointer;
     }
-    #cs-navigation .cs-dropdown:hover .cs-drop-ul {
+    /*#cs-navigation .cs-dropdown:hover .cs-drop-ul {
         opacity: 1;
         visibility: visible;
         transform: scaleY(1);
@@ -363,7 +363,7 @@
     #cs-navigation .cs-dropdown:hover .cs-drop-li {
         opacity: 1;
         transform: translateY(0);
-    }
+    }*/
     #cs-navigation .cs-drop-icon {
         width: 0.9375rem;
         height: auto;
