@@ -77,9 +77,13 @@ class DisclosureNav {
         this.controlledNodes = [];
         this.openIndex = null;
         this.useArrowKeys = true;
+
         this.topLevelNodes = [...this.rootNode.querySelectorAll("button.cs-li-link[aria-expanded][aria-controls]")];
 
         this.topLevelNodes.forEach((node) => {
+            node.addEventListener("mouseenter", this.onButtonClick.bind(this));
+            // attach event listeners for the list item top level node
+            node.parentNode.addEventListener("mouseleave", this.onMenuMouseLeave.bind(this));
             // handle button + menu
             if (node.tagName.toLowerCase() === "button" && node.hasAttribute("aria-controls")) {
                 const menu = node.parentNode.querySelector("ul");
@@ -153,6 +157,17 @@ class DisclosureNav {
         var buttonIndex = this.topLevelNodes.indexOf(button);
         var buttonExpanded = button.getAttribute("aria-expanded") === "true";
         this.toggleExpand(buttonIndex, !buttonExpanded);
+    }
+
+    /*onMenuMouseEnter(event) {
+        var button = event.target;
+        var buttonIndex = this.topLevelNodes.indexOf(button);
+        var buttonExpanded = button.getAttribute("aria-expanded") === "true";
+        this.toggleExpand(buttonIndex, !buttonExpanded);
+    }*/
+
+    onMenuMouseLeave(event) {
+        this.toggleExpand(this.openIndex, false);
     }
 
     onButtonKeyDown(event) {
