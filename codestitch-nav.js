@@ -36,10 +36,7 @@ for (const item of dropDowns) {
     item.addEventListener("click", onClick);
 }
 
-/*-- --------------------------------------- -->
-<---     Aria-Expanded Attributes            -->
-<--- --------------------------------------- -*/
-// checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not
+// set aria-expanded for the mobile menu button
 function ariaExpanded(selector) {
     const csAriaExpanded = document.querySelector(selector);
     const csExpanded = csAriaExpanded.getAttribute("aria-expanded");
@@ -56,15 +53,6 @@ function ariaExpanded(selector) {
 // Begin New Code Not included in CodeStitch
 //
 //
-
-/*-- -------------------------------------------- -->
-<---     Open dropdowns on hover, close on blur   -->
-<--- -------------------------------------------- -*/
-
-/*-- --------------------------------------- -->
-<---     Escape Key to Close Expanded Items  -->
-<---     Return focus to top level item      -->
-<--- --------------------------------------- -*/
 
 /*-- --------------------------------------- -->
 <---     Remove aria-current if set          -->
@@ -98,11 +86,6 @@ class DisclosureNav {
                     menu.addEventListener("keydown", this.onMenuKeyDown.bind(this));
                     node.addEventListener("click", this.onButtonClick.bind(this));
                 }
-            }
-            // handle links
-            else {
-                this.controlledNodes.push(null);
-                node.addEventListener("keydown", this.onLinkKeyDown.bind(this));
             }
         });
 
@@ -185,31 +168,24 @@ window.addEventListener(
     function () {
         var menus = document.querySelectorAll(".cs-nav");
         var disclosureMenus = [];
-
         for (var i = 0; i < menus.length; i++) {
             disclosureMenus[i] = new DisclosureNav(menus[i]);
         }
 
-        // fake link behavior
+        // handle aria-current
         disclosureMenus.forEach((disclosureNav, i) => {
-            // var links = menus[i].querySelectorAll('[href="#mythical-page-content"]');
-            // var examplePageHeading = document.getElementById("mythical-page-heading");
+            var links = menus[i].querySelectorAll("a");
             for (var k = 0; k < links.length; k++) {
-                // The codepen export script updates the internal link href with a full URL
-                // we're just manually fixing that behavior here
-                links[k].href = "#mythical-page-content";
-
-                links[k].addEventListener("click", (event) => {
-                    // change the heading text to fake a page change
-                    var pageTitle = event.target.innerText;
-                    examplePageHeading.innerText = pageTitle;
-
-                    // handle aria-current
-                    for (var n = 0; n < links.length; n++) {
-                        links[n].removeAttribute("aria-current");
-                    }
-                    event.target.setAttribute("aria-current", "page");
-                });
+                // removes aria-current from all nav links if present
+                for (var n = 0; n < links.length; n++) {
+                    links[n].removeAttribute("aria-current");
+                }
+                // sets aria-current=page on the first link that matches the current url
+                if (links[k].href == window.location.href) {
+                    links[k].setAttribute("aria-current", "page");
+                    links[k].className += " cs-active";
+                    break;
+                }
             }
         });
     },
