@@ -53,10 +53,9 @@ function ariaExpanded(selector) {
 // Begin New Code Not included in CodeStitch
 //
 //
-
 /*-- --------------------------------------- -->
-<---     Remove aria-current if set          -->
-<---     Set aria-current on focused link    -->
+<---     Begin New Code Not                  -->
+<---     included in CodeStitch              -->
 <--- --------------------------------------- -*/
 
 class DisclosureNav {
@@ -99,7 +98,7 @@ class DisclosureNav {
 
     onBlur(event) {
         var menuContainsFocus = this.rootNode.contains(event.relatedTarget);
-        if (!menuContainsFocus && this.openIndex !== null) {
+        if (!event.relatedTarget.parentNode.classList.contains("cs-drop-li") && event.target.parentNode.classList.contains("cs-drop-li")) {
             this.toggleExpand(this.openIndex, false);
         }
     }
